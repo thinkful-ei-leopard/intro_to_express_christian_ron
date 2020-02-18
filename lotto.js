@@ -33,23 +33,31 @@ app.get('/lotto', (req, res) => {
         return randomNumbers.includes(parseInt(number));
     });
   }
-  
 
-  // if you get fewer than 4, return Sorry, you lose
+  // if you get fewer than 4, return "Sorry, you lose"
   // If 4 match, "Congratulations, you win a free ticket"
-  // if 5 match "Congratulations! You win $100!"
-  // if 6 match "Wow! Unbelievable! You could have won the mega millions!"
-  res.send(`Numbers: ${numbers} Random Numbers: ${randomNumbers} Matched Numbers: ${matchedNumbers}`);
-});
+  // if 5 match 'Congratulations! You win $100!'
+  // if 6 match 'Wow! Unbelievable! You could have won the mega millions!'
+  if (matchedNumbers.length < 4) {
+    res.status(200)
+    .send('Sorry, you lose');
+  }
+  else if (matchedNumbers.length === 4) {
+      res.status(200)
+      .send('Congratulations, you win a free ticket');
+  }
+  else if (matchedNumbers.length === 5) {
+      res.status(200)
+      .send('Congratulations! You win $100!');
+  }
+  else if (matchedNumbers.length === 6) {
+      res.status(200)
+      .send('Wow! Unbelievable! You could have won the mega millions!');
+  }
 
-// for( let i=o; i < 6; i++) {
-//     if(numbers.includes(randomNumbers[i])) {
-//         res.
-//     }
-// }
+});
 
 app.listen(8000, () => {
   console.log('Express is listening on port 8000');
 });
 
-//Math.floor(Math.random()*x)
