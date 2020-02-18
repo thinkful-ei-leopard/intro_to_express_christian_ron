@@ -12,25 +12,25 @@ const app = express();
 app.use(morgan('common'));
 
 app.get('/sum', (req, res) => {
-    // get the values from the request
-    const a = req.query.a;
-    const b = req.query.b;
+  // get the values from the request
+  const a = req.query.a;
+  const b = req.query.b;
 
-    // validate the values
-    if(!a) {
-        return res.status(400).send('A is required.');
-    }
+  // validate the values
+  if(!a) {
+    return res.status(400).send('A is required.');
+  }
 
-    if(!b) {
-        return res.status(400).send('B is required.');
-    }
+  if(!b) {
+    return res.status(400).send('B is required.');
+  }
 
-    // a and b are strings, make them numbers
-    const c = parseInt(a) + parseInt(b);
+  // a and b are strings, make them numbers
+  const c = parseInt(a) + parseInt(b);
 
-    const replyText = `The sum of ${a} and ${b} is ${c}.`;
+  const replyText = `The sum of ${a} and ${b} is ${c}.`;
 
-    res.send(replyText);
+  res.status(200).send(replyText);
 });
 
 app.listen(8000, () => {

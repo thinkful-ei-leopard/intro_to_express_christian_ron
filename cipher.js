@@ -18,11 +18,11 @@ app.get('/cipher', (req, res) => {
   const cipher = text
     .toUpperCase()
     .split('')
-    .map((letter, idx) => {
+    .map(letter => {
       // INPUT: text = C, shift = 5 OUTPUT SHOULD BE H (72)
-      const code = letter.charCodeAt(idx); // C = 67   
-      let diff = code + parseFloat(shift); // 67 + 5 = 72 SHIFT needs to be a number
-      const newChar = String.fromCharCode(diff); // 67 + 7 , 74 which is J
+      const code = letter.charCodeAt(0); // Get the charCode value. ie C = 67   
+      let diff = code + parseFloat(shift); // Add the shift to charCode value. ie 67 + 5 = 72 SHIFT needs to be a number
+      const newChar = String.fromCharCode(diff); // convert to string. 67 + 7 , 74 which is J
       return newChar;
     })
     .join('');
